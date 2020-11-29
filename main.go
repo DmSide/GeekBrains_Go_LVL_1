@@ -2,7 +2,6 @@ package main
 
 import "fmt"
 
-//func helloWorld(страна string ) string{	// it works )
 func helloWorld(country string) string {
 	switch country {
 	case "RU":
@@ -18,7 +17,6 @@ func helloWorld(country string) string {
 }
 
 func main() {
-	// привет := "Привет" // Just for fun
 	fmt.Println(helloWorld("RU"))
 	fmt.Println(helloWorld("EN"))
 	fmt.Println(helloWorld("ZN"))
