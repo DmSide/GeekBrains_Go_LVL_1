@@ -3,7 +3,7 @@ package main
 import (
 	"fmt"
 	l1 "gb_lvl_1/lesson1"
-	l2 "gb_lvl_1/lesson2"
+	l3 "gb_lvl_1/lesson3"
 )
 
 func main() {
@@ -15,15 +15,21 @@ func main() {
 
 	// LESSON 2
 
-	l2.Calculator()
+	//l2.Calculator()
+	//
+	//fmt.Println()
+	//for _, num := range l2.SimpleNumbersV1(1000) {
+	//	fmt.Print(num, " ")
+	//}
+	//
+	//fmt.Println()
+	//for _, num := range l2.SimpleNumbersV2(100) {
+	//	fmt.Print(num, " ")
+	//}
 
-	fmt.Println()
-	for _, num := range l2.SimpleNumbersV1(1000) {
-		fmt.Print(num, " ")
-	}
+	// LESSON 3
 
-	fmt.Println()
-	for _, num := range l2.SimpleNumbersV2(100) {
-		fmt.Print(num, " ")
-	}
+	arr := []int{10, 4, 8, 6, 2, 5, 3, 7, 9}
+	a := l3.SortBubble(arr)
+	fmt.Println(a)
 }
