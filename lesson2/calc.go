@@ -10,16 +10,29 @@ func Calculator() {
 	var (
 		a, b, res float64
 		op        string
+		err       error
 	)
 
 	fmt.Print("Введите первое число: ")
-	_, _ = fmt.Scanln(&a)
+	_, err = fmt.Scanln(&a)
+	if err != nil {
+		fmt.Println("Ошибка чтения первого числа")
+		os.Exit(4)
+	}
 
 	fmt.Print("Введите второе число: ")
-	_, _ = fmt.Scanln(&b)
+	_, err = fmt.Scanln(&b)
+	if err != nil {
+		fmt.Println("Ошибка чтения второго числа")
+		os.Exit(5)
+	}
 
 	fmt.Print("Введите арифметическую операцию (+, -, *, /, ^): ")
-	_, _ = fmt.Scanln(&op)
+	_, err = fmt.Scanln(&op)
+	if err != nil {
+		fmt.Println("Ошибка чтения арифмметической операции")
+		os.Exit(6)
+	}
 
 	switch op {
 	case "+":
@@ -29,6 +42,10 @@ func Calculator() {
 	case "*":
 		res = a * b
 	case "/":
+		if b == 0 {
+			fmt.Println("Деление на ноль невозможно")
+			os.Exit(3)
+		}
 		res = a / b
 	case "^":
 		res = math.Pow(a, b)

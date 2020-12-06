@@ -1,16 +1,29 @@
 package lesson2
 
+import "math"
+
 func SimpleNumbersV1(max int) []int {
-	result := []int{2}
-	for i := 3; i < max; i++ {
+	var (
+		i, k int
+	)
+	// result := make([]int, int(math.Sqrt(float64(max)))+1)
+	result := make([]int, max/int(math.Log(float64(max))-1))
+	result[0] = 2
+	k = 1
+	for i = 3; i < max; i++ {
 		c := true
 		for _, res := range result {
+			if res == 0 {
+				break
+			}
 			if i%res == 0 {
 				c = false
+				break
 			}
 		}
 		if c {
-			result = append(result, i)
+			result[k] = i
+			k++
 		}
 	}
 	return result
