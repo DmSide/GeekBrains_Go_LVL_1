@@ -4,6 +4,7 @@ import (
 	"fmt"
 	l1 "gb_lvl_1/lesson1"
 	l2 "gb_lvl_1/lesson2"
+	l3 "gb_lvl_1/lesson3"
 )
 
 func main() {
@@ -26,4 +27,9 @@ func main() {
 	for _, num := range l2.SimpleNumbersV2(100) {
 		fmt.Print(num, " ")
 	}
+
+	// LESSON 3
+
+	fmt.Println()
+	l3.FuzzBuzz()
 }
