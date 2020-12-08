@@ -1,24 +1,20 @@
 package lesson3
 
-import "fmt"
-
 func SortBubble(arr []int) []int {
-	_len := len(arr)
-	a := make([]int, _len)
-	t := copy(a, arr)
-	fmt.Println(t)
+	tmpArr := make([]int, len(arr))
+	copy(tmpArr, arr)
 
-	for j := 1; j <= _len-1; j++ {
+	for j := 1; j < len(arr); j++ {
 		f := true
-		for i := 0; i <= _len-1-j; i++ {
-			if a[i] > a[i+1] {
-				a[i], a[i+1] = a[i+1], a[i]
+		for i := 0; i < len(arr)-j; i++ {
+			if tmpArr[i] > tmpArr[i+1] {
+				tmpArr[i], tmpArr[i+1] = tmpArr[i+1], tmpArr[i]
 				f = false
 			}
 		}
 		if f {
-			return a
+			return tmpArr
 		}
 	}
-	return a
+	return tmpArr
 }
