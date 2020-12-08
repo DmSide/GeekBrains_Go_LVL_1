@@ -1,28 +1,37 @@
 package main
 
-import "fmt"
-import l3 "gb_lvl_1/lesson3"
-
-func helloWorld(country string) string {
-	switch country {
-	case "RU":
-		return "Привет, мир!"
-	case "EN":
-		return "Hello world!"
-	case "ZN":
-		return "你好，世界!"
-	default:
-		return "I don't know the entered country. Country must contain only 2 letters"
-
-	}
-}
+import (
+	"fmt"
+	l1 "gb_lvl_1/lesson1"
+	l2 "gb_lvl_1/lesson2"
+	l3 "gb_lvl_1/lesson3"
+)
 
 func main() {
-	fmt.Println(helloWorld("RU"))
-	fmt.Println(helloWorld("EN"))
-	fmt.Println(helloWorld("ZN"))
+	// LESSON 1
+
+	fmt.Println(l1.HelloWorld("RU"))
+	fmt.Println(l1.HelloWorld("EN"))
+	fmt.Println(l1.HelloWorld("ZN"))
+
+	// LESSON 2
+
+	l2.Calculator()
+
+	fmt.Println()
+	for _, num := range l2.SimpleNumbersV1(1000) {
+		fmt.Print(num, " ")
+	}
+
+	fmt.Println()
+	for _, num := range l2.SimpleNumbersV2(100) {
+		fmt.Print(num, " ")
+	}
 
 	// LESSON 3
+
+	fmt.Println()
+	l3.FuzzBuzz()
 
 	arr := []int{10, 4, 8, 6, 2, 5, 3, 7, 9}
 	a := l3.SortInsert(arr)
