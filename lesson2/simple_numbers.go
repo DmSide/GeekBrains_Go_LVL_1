@@ -3,27 +3,20 @@ package lesson2
 import "math"
 
 func SimpleNumbersV1(max int) []int {
-	var (
-		i, k int
-	)
-	// result := make([]int, int(math.Sqrt(float64(max)))+1)
-	result := make([]int, max/int(math.Log(float64(max))-1))
-	result[0] = 2
-	k = 1
+	var i int
+
+	result := make([]int, 0, max/int(math.Log(float64(max))-1))
+	result = append(result, 2)
 	for i = 3; i < max; i++ {
 		c := true
 		for _, res := range result {
-			if res == 0 {
-				break
-			}
 			if i%res == 0 {
 				c = false
 				break
 			}
 		}
 		if c {
-			result[k] = i
-			k++
+			result = append(result, i)
 		}
 	}
 	return result

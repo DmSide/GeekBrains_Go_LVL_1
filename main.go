@@ -32,4 +32,8 @@ func main() {
 
 	fmt.Println()
 	l3.FuzzBuzz()
+
+	arr := []int{10, 4, 8, 6, 2, 5, 3, 7, 9}
+	a := l3.SortInsert(arr)
+	fmt.Println(a)
 }
