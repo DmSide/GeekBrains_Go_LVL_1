@@ -33,7 +33,11 @@ func main() {
 	fmt.Println()
 	l3.FuzzBuzz()
 
-	arr := []int{10, 4, 8, 6, 2, 5, 3, 7, 9}
-	a := l3.SortInsert(arr)
-	fmt.Println(a)
+	arr1 := []int{10, 4, 8, 6, 2, 5, 3, 7, 9}
+	a1 := l3.SortBubble(arr1)
+	fmt.Println(a1)
+
+	arr2 := []int{10, 4, 8, 6, 2, 5, 3, 7, 9}
+	a2 := l3.SortInsert(arr2)
+	fmt.Println(a2)
 }
