@@ -12,6 +12,8 @@ type FibStruct struct {
 func (fib *FibStruct) Init() {
 	fib.fibMap = make(map[int]int)
 	fib.fibMap[1] = 1
+	fib.fibMap[2] = 2
+	fib.fibMap[3] = 3
 }
 
 func (fib *FibStruct) Fib(n int) int {
@@ -19,24 +21,12 @@ func (fib *FibStruct) Fib(n int) int {
 		return 0
 	}
 
-	var (
-		f1, f2 int
-	)
-
-	f1 = fib.fibMap[n-1]
-	if f1 == 0 {
-		f1 = fib.Fib(n - 1)
-		fib.fibMap[n-1] = f1
+	val, ok := fib.fibMap[n]
+	if ok {
+		return val
 	}
 
-	f2 = fib.fibMap[n-2]
-	if f2 == 0 {
-		f2 = fib.Fib(n - 2)
-		fib.fibMap[n-2] = f2
-	}
-
-	fib.fibMap[n] = f1 + f2
-	return f1 + f2
+	return fib.Fib(n-1) + fib.Fib(n-2)
 }
 
 func (fib *FibStruct) Print() {
