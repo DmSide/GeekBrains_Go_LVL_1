@@ -2,17 +2,18 @@ package lesson7_cfgReader
 
 import (
 	"fmt"
+	"github.com/go-playground/validator/v10"
 	"gopkg.in/yaml.v2"
 	"log"
 	"os"
 )
 
 type YamlConfig struct {
-	Port        int    `yaml:"port"`
-	DbURL       string `yaml:"db_port"`
-	JaegerURL   string `yaml:"jaeger_url"`
-	SentryURL   string `yaml:"sentry_url"`
-	KafkaBroker string `yaml:"kafka_broker"`
+	Port        int    `yaml:"port" validate:"required"`
+	DbURL       string `yaml:"db_url" validate:"required"`
+	JaegerURL   string `yaml:"jaeger_url" validate:"required"`
+	SentryURL   string `yaml:"sentry_url" validate:"required"`
+	KafkaBroker string `yaml:"kafka_broker" validate:"required"`
 	// MyDate	Date TODO: Add date
 }
 
@@ -33,6 +34,13 @@ func ConfigInitByYamlParams() YamlConfig {
 	if err != nil {
 		log.Fatalf("error: %v", err)
 	}
+
+	validate = validator.New()
+	err = validate.Struct(cfg)
+	if err != nil {
+		log.Fatalf("Validation error: %+v", err)
+	}
+
 	fmt.Printf("Config uploaded successfully!")
 	return cfg
 }
