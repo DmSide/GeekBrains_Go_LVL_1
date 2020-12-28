@@ -3,8 +3,8 @@ package lesson7_cfgReader
 import (
 	"fmt"
 	"gopkg.in/yaml.v2"
-	"io/ioutil"
 	"log"
+	"os"
 )
 
 type YamlConfig struct {
@@ -17,14 +17,19 @@ type YamlConfig struct {
 }
 
 func ConfigInitByYamlParams() YamlConfig {
-	file, err := ioutil.ReadFile("config/conf.yaml")
+	file, err := os.Open("./config/conf.yaml")
+	// You can also use:
+	// file, err := ioutil.ReadFile("config/conf.yaml")
 	if err != nil {
 		log.Fatal(err)
 	}
+	defer file.Close()
 
 	cfg := YamlConfig{}
 
-	err = yaml.Unmarshal(file, &cfg)
+	err = yaml.NewDecoder(file).Decode(&cfg)
+	// You can also use:
+	// err = yaml.Unmarshal(file, &cfg)
 	if err != nil {
 		log.Fatalf("error: %v", err)
 	}
