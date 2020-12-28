@@ -10,10 +10,11 @@ import (
 
 type YamlConfig struct {
 	Port        int    `yaml:"port" validate:"required"`
-	DbURL       string `yaml:"db_url" validate:"required"`
-	JaegerURL   string `yaml:"jaeger_url" validate:"required"`
-	SentryURL   string `yaml:"sentry_url" validate:"required"`
-	KafkaBroker string `yaml:"kafka_broker" validate:"required"`
+	DbURL       string `yaml:"db_url" validate:"required,url"`
+	JaegerURL   string `yaml:"jaeger_url" validate:"required,url"`
+	SentryURL   string `yaml:"sentry_url" validate:"required,url"`
+	KafkaBroker string `yaml:"kafka_broker" validate:"required,url"`
+	CorrectURL  string `yaml:"correct_url" validate:"required,url"`
 	// MyDate	Date TODO: Add date
 }
 
