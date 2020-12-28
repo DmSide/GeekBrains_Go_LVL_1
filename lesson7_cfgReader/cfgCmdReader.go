@@ -7,7 +7,7 @@ import (
 import "github.com/go-playground/validator/v10"
 
 var (
-	lesson = flag.Int("lesson", 6, "Number of the lesson")
+	lesson = flag.Int("lesson", 7, "Number of the lesson")
 )
 
 type Lesson struct {

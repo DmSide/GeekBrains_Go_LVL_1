@@ -12,6 +12,8 @@ import (
 
 func main() {
 	lesson := l7.ConfigInitByCmdParams()
+	fmt.Printf("Loading lesson %v ...\n", lesson)
+
 	switch lesson {
 	case 1: // LESSON 1
 		fmt.Println(l1.HelloWorld("RU"))
@@ -20,9 +22,9 @@ func main() {
 	case 2: // LESSON 2
 		if false {
 			l2.Calculator()
+			fmt.Println()
 		}
 
-		fmt.Println()
 		for _, num := range l2.SimpleNumbersV1(1000) {
 			fmt.Print(num, " ")
 		}
@@ -32,7 +34,6 @@ func main() {
 			fmt.Print(num, " ")
 		}
 	case 3: // LESSON 3
-		fmt.Println()
 		l3.FuzzBuzz()
 
 		arr1 := []int{10, 4, 8, 6, 2, 5, 3, 7, 9}
@@ -48,7 +49,9 @@ func main() {
 		fs := l4.FibStruct{}
 		fs.Init()
 		fs.Fib(10)
-		fs.Print()
+	case 7:
+		cfg := l7.ConfigInitByYamlParams()
+		fmt.Printf("%+v", cfg)
 	default:
 		fmt.Printf("Wrong lesson number entered: %v", lesson)
 		log.Fatalf("Wrong lesson number entered: %v", lesson)
