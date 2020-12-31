@@ -1,37 +1,37 @@
 package lesson2
 
 import (
+	"bufio"
 	"fmt"
+	"io"
 	"math"
-	"os"
 )
 
-func Calculator() {
+func Calculator(stdin io.Reader) (float64, error) {
 	var (
 		a, b, res float64
 		op        string
 		err       error
 	)
 
+	reader := bufio.NewReader(stdin)
+
 	fmt.Print("Введите первое число: ")
-	_, err = fmt.Scanln(&a)
+	_, err = fmt.Fscan(reader, &a)
 	if err != nil {
-		fmt.Println("Ошибка чтения первого числа")
-		os.Exit(4)
+		return 0, fmt.Errorf("ой, Ошибка чтения первого числа")
 	}
 
 	fmt.Print("Введите второе число: ")
-	_, err = fmt.Scanln(&b)
+	_, err = fmt.Fscan(reader, &b)
 	if err != nil {
-		fmt.Println("Ошибка чтения второго числа")
-		os.Exit(5)
+		return 0, fmt.Errorf("ой, Ошибка чтения второго числа")
 	}
 
 	fmt.Print("Введите арифметическую операцию (+, -, *, /, ^): ")
-	_, err = fmt.Scanln(&op)
+	_, err = fmt.Fscan(reader, &op)
 	if err != nil {
-		fmt.Println("Ошибка чтения арифмметической операции")
-		os.Exit(6)
+		return 0, fmt.Errorf("ой, Ошибка чтения арифмметической операции")
 	}
 
 	switch op {
@@ -43,15 +43,13 @@ func Calculator() {
 		res = a * b
 	case "/":
 		if b == 0 {
-			fmt.Println("Деление на ноль невозможно")
-			os.Exit(3)
+			return 0, fmt.Errorf("ой, Деление на ноль невозможно")
 		}
 		res = a / b
 	case "^":
 		res = math.Pow(a, b)
 	default:
-		fmt.Println("Операция выбрана неверно")
-		os.Exit(1)
+		return 0, fmt.Errorf("ой, Операция выбрана неверно")
 	}
-	fmt.Printf("Результат выполнения операции: %f\n", res)
+	return res, nil
 }
