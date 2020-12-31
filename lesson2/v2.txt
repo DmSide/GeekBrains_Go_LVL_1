@@ -1,0 +1,6 @@
+goos: windows
+goarch: amd64
+pkg: gb_lvl_1/lesson2
+BenchmarkSimpleNumbersV2-8   	      85	  13403009 ns/op	   0.08 MB/s	33378618 B/op	   14783 allocs/op
+PASS
+ok  	gb_lvl_1/lesson2	1.176s

@@ -3,6 +3,7 @@ package lesson1
 type HelloWorldError struct{}
 
 func (*HelloWorldError) Error() string {
+	// Some additional logic could be here
 	return "I don't know the entered country. Country must contain only 2 letters"
 }
 

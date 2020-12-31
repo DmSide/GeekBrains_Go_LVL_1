@@ -1,6 +1,7 @@
 package main
 
 import (
+	"bytes"
 	"fmt"
 	l1 "gb_lvl_1/lesson1"
 	l2 "gb_lvl_1/lesson2"
@@ -21,7 +22,12 @@ func main() {
 		fmt.Println(l1.HelloWorld("ZN"))
 	case 2: // LESSON 2
 		if false {
-			l2.Calculator()
+			var stdin bytes.Buffer
+			res, err := l2.Calculator(&stdin)
+			if err != nil {
+				fmt.Printf("We have a problem: %v", err)
+			}
+			fmt.Printf("Результат выполнения операции: %f\n", res)
 			fmt.Println()
 		}
 
