@@ -22,10 +22,10 @@ func TestCalculator(t *testing.T) {
 		{name: "positive_/", input1: "10", input2: "2", input3: "/", want: 5, wantErr: nil},
 		{name: "negative_/_0", input1: "10", input2: "0", input3: "/", want: 0, wantErr: fmt.Errorf("ой, Деление на ноль невозможно")},
 		{name: "positive_^", input1: "10", input2: "3", input3: "^", want: 1000, wantErr: nil},
-		{name: "negative_wrong_input1", input1: "string", input2: "0", input3: "+", want: 0, wantErr: fmt.Errorf("ой, Ошибка чтения первого числа")},
+		{name: "negative_wrong_input1", input1: "string", input2: "5", input3: "+", want: 0, wantErr: fmt.Errorf("ой, Ошибка чтения первого числа")},
 		{name: "negative_wrong_input2", input1: "10", input2: "string", input3: "+", want: 0, wantErr: fmt.Errorf("ой, Ошибка чтения второго числа")},
-		{name: "negative_wrong_input3", input1: "10", input2: "0", input3: "string", want: 0, wantErr: fmt.Errorf("ой, Ошибка чтения арифмметической операции")},
-		{name: "negative_wrong_op", input1: "10", input2: "0", input3: "op", want: 0, wantErr: fmt.Errorf("ой, Операция выбрана неверно")},
+		{name: "negative_wrong_input3", input1: "10", input2: "5", input3: "string", want: 0, wantErr: fmt.Errorf("ой, Ошибка чтения арифмметической операции")},
+		{name: "negative_wrong_op", input1: "10", input2: "5", input3: "op", want: 0, wantErr: fmt.Errorf("ой, Операция выбрана неверно")},
 	}
 
 	for _, tc := range tests {
