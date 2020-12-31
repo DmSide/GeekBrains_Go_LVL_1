@@ -9,11 +9,19 @@ import (
 )
 
 func main() {
+	var (
+		err error
+		val string
+	)
 	// LESSON 1
-
-	fmt.Println(l1.HelloWorld("RU"))
-	fmt.Println(l1.HelloWorld("EN"))
-	fmt.Println(l1.HelloWorld("ZN"))
+	countries := []string{"RU", "EN", "ZN", "UNKNOWN COUNTRY"}
+	for _, country := range countries {
+		val, err = l1.HelloWorld(country)
+		if err != nil {
+			fmt.Printf("Error occurs: %v", err)
+		}
+		fmt.Println(val)
+	}
 
 	// LESSON 2
 
